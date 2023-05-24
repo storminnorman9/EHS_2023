@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="body-content home">
+    <div class="pic-container">
+        <img src="~/images/logo.jpg" alt="Logo">
+    </div>
+    <div class="form">
+        <p><strong>Please enter your Email for EHS 2023.</strong></p>
+        <div class="input-container">
+            <input class="myinput" size="50" id="CredIn" spellcheck="false">
+        </div>
+        <div id="ERRORLABEL"></div>
+        <br />
+        <button class="btn btn-warning" id="retry" type="button" onClick="window.location.reload();">Retry</button>
+        <button class="btn btn-primary" id="login" text="Enter Email">Enter Email</button>
+    </div>
+    <div>
+        <p>For questions or concerns, please contact our registration department at <a href="mailto:EXAMPLE@EXAMPLE.com">EXAMPLE@EXAMPLE.com</a>.</p>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script>
+    $(window).on('load', function () {
+        //
+        // Clear any session variables on page load
+        //
+        ClearSession();
+        $("#CredIn").focus();
+    });
+
+    $("#login").on('click', function (e) {
+        try {
+            $('#ERRORLABEL').html("").hide();
+            $('#retry').html("").hide();
+            $.post(
+                //
+                // Go into our VAR with $("#CredIn").val() as the parameter for userCredentials
+                //
+                '@Url.Action("ValidateCredentials", "Validate")',
+                { userCredentials: $("#CredIn").val() },
+                function (result) {
+                    if (result.charAt(0) == '*') {
+                        $('#ERRORLABEL').html("No sessions were found for this login.").show();
+                        $('#retry').html("Retry").show();
+                    }
+                    else {
+                        //
+                        // If result does not return an error, go to CertificateIndex
+                        //
+                        $('#ERRORLABEL').hide();
+                        window.location.replace('@Url.Action("CertificateIndex", "Certificate")');
+                    }
+                }
+            );
+        }
+        catch (e) {
+            $('#ERRORLABEL').html("Unknown Error").hide();
+        }
+    });
+
+    function ClearSession(result) {
+        $.post("@Url.Action("ClearSessionVariables", "Home")");
+    }
+</script>

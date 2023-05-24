@@ -1,0 +1,159 @@
+﻿@{
+    ViewData["Title"] = "Certificate";
+}
+@model EHS_2023.Models.DataModel;
+
+<div id="printbutton">
+    <button onclick="PrintCertificate();">Print</button>
+</div>
+
+<div id="htmldiv">
+    <div class="body-content certificate" id="certificate">
+        <div class="pic-container">
+            <img src="../images/logo.png" alt="Logo">
+            <div class="header">
+                <h1><span>C</span>ERTIFICATE OF <span>C</span>OMPLETION</h1>
+                <span>THIS IS TO CERTIFY THAT</span><br /><span id="name">@Model.FullName</span>
+                <hr />
+                <p><strong>ATTENDED THE FOLLOWING ONE-HOUR SEMINARS:</strong></p>
+            </div>
+        </div>
+        <div>
+            <ul id="htmllist">
+                <!------------------------->
+                <!-- Render all sessions -->
+                <!------------------------->
+            </ul>
+        </div>
+        <div>
+            <p id="info">
+                <strong>During the Southern California Facilities Expo, April 5-6, 2023, Anaheim Convention Center, Anaheim, CA</strong>
+                <br />Direct questions to: Marion Sours, Facilities Expo, (312) 335-1871, msours@facilitiesexpo.com
+            </p>
+        </div>
+    </div>
+</div>
+
+<div id="insertcertificate">
+    <ul id="dummylist">
+        <!----------------------------------------------------------------------->
+        <!-- Render a session for getting availableHeight for PrintCertificate -->
+        <!----------------------------------------------------------------------->
+    </ul>
+</div>
+
+<div id="logoutdiv">
+    <hr />
+    <button id="logoutBtn" onclick="Logout();">Logout</button>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script>
+    //
+    // This page creates 2 certificates, 1 for HTML and 1 for printing out a PDF
+    //
+    let topDivHeight, footerHeight;
+    let data = @Html.Raw(Model.CredentialsOutput);
+
+    $(window).on('load', function () {
+        let HTMLList = document.getElementById("htmllist");
+        topDivHeight = $(".pic-container").outerHeight(true);
+        footerHeight = $(".certificate.body-content div:nth-child(3)").outerHeight(true);
+        //
+        // Append all sessions to #htmllist
+        //
+        for (let i = 0; i < data.length; i++) {
+            let HTMLListItem = document.createElement("li");
+            HTMLListItem.innerText = String(data[i]["SessionName"]);
+            HTMLList.appendChild(HTMLListItem);
+        }
+
+        $("#printbutton").delay(3000).show();
+        $("#htmldiv").delay(3000).show();
+        $("#logoutdiv").delay(3000).show();
+    });
+
+    let availableHeight;
+    let innerPageHeight = 748; // px
+    let headerString = 
+        '<div class="body-content certificate" id="certificate">' +
+            '<div class="pic-container"><img src="../images/logo.png" alt="Logo">' +
+                '<div class="header">' +
+                    '<h1><span>C</span>ERTIFICATE OF <span>C</span>OMPLETION</h1>' +
+                    '<span>THIS IS TO CERTIFY THAT</span><br /><span id="name">@Model.FullName</span>' +
+                    '<hr />' +
+                    '<p><strong>ATTENDED THE FOLLOWING ONE-HOUR SEMINARS:</strong></p>' +
+                '</div>' +
+            '</div>' +
+            '<div>' +
+                '<ul id="list">';
+    let footerString = 
+                '</ul>' +
+            '</div>' +
+            '<div id="bottomdiv">' +
+                '<p id="info"><strong>During the Southern California Facilities Expo, April 5-6, 2023, Anaheim Convention Center, Anaheim, CA</strong>' +
+                '<br />Direct questions to: Marion Sours, Facilities Expo, (312) 335-1871, msours@facilitiesexpo.com</p>' +
+            '</div>' +
+        '</div>';
+
+    function PrintCertificate() {
+        //
+        // Hide what is currently on the page except the dummylist
+        //
+        $('body').css('padding', '0');
+        $("#printbutton").hide();
+        $("#htmldiv").hide();
+        $("#logoutdiv").hide();
+
+        let certificateList, dummyListItem;
+        let HTMLString = headerString;
+        //
+        // availableHeight is the space left on the page for the session names
+        //
+        availableHeight = (innerPageHeight - topDivHeight - footerHeight) + 20;
+        //
+        // Start adding sessions to HTMLString while adding strings necessary for page break
+        //
+        for (let j = 0; j < data.length; j++) {
+            //
+            // Insert current session to dummyListItem and append to dummylist so we can get the height needed for the below if statement
+            //
+            certificateList = document.getElementById("dummylist");
+            dummyListItem = document.createElement("li");
+            dummyListItem.innerText = String(data[j]["SessionName"]);
+            certificateList.appendChild(dummyListItem);
+            
+            if (($(dummyListItem).outerHeight(true) + $(certificateList).outerHeight(true)) > availableHeight) {
+                //
+                // The height of the current item + the height of the dummylist is greater than available height,
+                // perform a page break
+                //
+                HTMLString += footerString;
+                HTMLString += headerString;
+                //
+                // Clears the dummylist of items so it can be reused for the next page
+                //
+                certificateList.replaceChildren();
+            }
+            //
+            // Add current session to HTMLString
+            //
+            HTMLString += '<li>' + String(data[j]["SessionName"]) + '</li>';
+        }
+        HTMLString += footerString;
+        //
+        // Render HTMLString into #insertcertificate
+        //
+        $('#insertcertificate').append(HTMLString);
+
+        $('#dummylist').remove();
+        
+        window.print();
+        window.location.reload();
+    }
+
+    function Logout() {
+        window.location.replace('@Url.Action("Index", "Home")');
+    }
+</script>
