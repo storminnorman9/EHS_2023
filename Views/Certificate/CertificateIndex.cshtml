@@ -7,31 +7,35 @@
     <button onclick="PrintCertificate();">Print</button>
 </div>
 
-<div id="htmldiv">
-    <div class="body-content certificate" id="certificate">
-        <div class="pic-container">
-            <img src="../images/logo.png" alt="Logo">
-            <div class="header">
-                <h1><span>C</span>ERTIFICATE OF <span>C</span>OMPLETION</h1>
-                <span>THIS IS TO CERTIFY THAT</span><br /><span id="name">@Model.FullName</span>
-                <hr />
-                <p><strong>ATTENDED THE FOLLOWING ONE-HOUR SEMINARS:</strong></p>
+<div id="htmldiv2">
+
+    <div id="htmldiv">
+        <div class="body-content certificate" id="certificate">
+            <div class="pic-container" align="center">
+                <img src="../images/logo.jpg" alt="Logo">
+                <div class="header">
+                    <h1 style=""><span style="font-size:40pt">C</span>ERTIFICATE OF <span style="font-size:40pt">C</span>OMPLETION</h1>
+                    <span style="font-size:15pt; margin-bottom:0px; margin-top:0px">THIS IS TO CERTIFY THAT</span><span id="name" style="font-size:40pt; margin-bottom:0px; margin-top:0px">@Model.FullName</span>
+                    <hr />
+                    <p><strong style="font-size:15pt">ATTENDED THE FOLLOWING ONE-HOUR SEMINARS:</strong></p>
+                </div>
+            </div>
+            <div>
+                <ul id="htmllist">
+                    <!------------------------->
+                    <!-- Render all sessions -->
+                    <!------------------------->
+                </ul>
+            </div>
+            <div>
+                <p id="info">
+                    <strong>EHS Seminar & Tradeshow • June 5-8, 2023 • Moody Gardens Convention Center • Galveston, Texas</strong>
+                    <br />www.ehs-seminar.com
+                </p>
             </div>
         </div>
-        <div>
-            <ul id="htmllist">
-                <!------------------------->
-                <!-- Render all sessions -->
-                <!------------------------->
-            </ul>
-        </div>
-        <div>
-            <p id="info">
-                <strong>During the Southern California Facilities Expo, April 5-6, 2023, Anaheim Convention Center, Anaheim, CA</strong>
-                <br />Direct questions to: Marion Sours, Facilities Expo, (312) 335-1871, msours@facilitiesexpo.com
-            </p>
-        </div>
     </div>
+
 </div>
 
 <div id="insertcertificate">
@@ -43,7 +47,7 @@
 </div>
 
 <div id="logoutdiv">
-    <hr />
+    @*<hr / style="border-top: 4px solid black;">*@
     <button id="logoutBtn" onclick="Logout();">Logout</button>
 </div>
 
@@ -74,6 +78,8 @@
         $("#logoutdiv").delay(3000).show();
     });
 
+    //sivargas@superiorgrocers.com
+
     let availableHeight;
     let innerPageHeight = 748; // px
     let headerString = 
@@ -92,8 +98,8 @@
                 '</ul>' +
             '</div>' +
             '<div id="bottomdiv">' +
-                '<p id="info"><strong>During the Southern California Facilities Expo, April 5-6, 2023, Anaheim Convention Center, Anaheim, CA</strong>' +
-                '<br />Direct questions to: Marion Sours, Facilities Expo, (312) 335-1871, msours@facilitiesexpo.com</p>' +
+                '<p id="info"><strong>EHS Seminar & Tradeshow • June 5-8, 2023 • Moody Gardens Convention Center • Galveston, Texas</strong>' +
+                '<br />www.ehs-seminar.com</p>' +
             '</div>' +
         '</div>';
 
