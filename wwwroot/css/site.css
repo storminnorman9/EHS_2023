@@ -31,11 +31,11 @@
 }
 
 #C1 {
-    font-size: 40pt
+    font-size: 40pt;
 }
 
 #C2 {
-    font-size: 40pt
+    font-size: 40pt;
 }
 
 #name {
@@ -102,18 +102,18 @@
     }
 
     #C1 {
-        font-size: 40pt
+        font-size: 40pt;
     }
 
     #C2 {
-        font-size: 40pt
+        font-size: 40pt;
     }
 
     #pdfName {
         display: block;
         font-size: 40pt;
         margin-bottom: 0px;
-        margin-top: 0px
+        margin-top: 0px;
     }
 
     #pdfList {
