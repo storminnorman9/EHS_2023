@@ -24,6 +24,10 @@
 
 }
 
+#certHeader img {
+    width: 100%;
+}
+
 #certHeader hr {
     border-top: 4px solid black;
     margin-top: 0rem;
@@ -69,18 +73,7 @@
         size: landscape;
     }
 
-/*    .no-print, .no-print * {
-        display: none !important;
-        vertical-align: top !important
-    }*/
-
-    #pdfHeader img {
-/*        display: block;
-        text-align: center;
-        margin: auto;*/
-        /*padding-right: 100px;*/
-    }
-    
+   
 
     #pdfHeader {
         /*display: block;*/
@@ -88,12 +81,9 @@
         /*margin: auto;*/
     }
 
-    /*#pdfHeader img {*/
-        /*margin: auto;*/
-        /*align-content: center;*/
-        /*padding-right: 90px;*/
-        /*display: block
-    }*/
+    #pdfHeader img {
+        width: 100%;
+    }
 
     #pdfHeader hr {
         border-top: 4px solid black;
