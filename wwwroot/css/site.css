@@ -1,79 +1,143 @@
-html {
-  font-size: 14px;
-}
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
 
-html {
-    position: relative;
-    min-height: 100%;
-    min-width: 100%;
+
+.bodyContentHome {
+    justify-content: center;
+    align-items: center;
+    display: block;
+    text-align: center;
 }
 
 
-ul {
-    list-style: none;
-    padding-left:0px;
+/*
+    HTML Cert Styling
+*/
+
+#retry {
+    background-color: gold;
+
 }
 
-body {
-  margin-bottom: 60px;
-  /*border: 2px solid black*/
-}
-
-h1 {
-    margin-bottom: 0px;
-    margin-top: 0px;
-}
-
-
-#htmldiv {
-    /*border: 2px solid black;*/
-    height: 100%;
-    width: 100%;
-    align-content: center;
-    padding: 40px;
-}
-
-
-#htmldiv2 {
-    border: 3px solid grey;
-    height: 100%;
-    width: 100%;
-    /*align-content: center;*/
-}
-
-#certificate div:nth-child(3) {
+#certHeader {
+    display: block;
     text-align: center;
 
 }
 
-.header br {
-    line-height: 0px;
-    
-}
-
-.header hr {
+#certHeader hr {
     border-top: 4px solid black;
     margin-top: 0rem;
     margin-bottom: 0rem;
 }
 
-.header span {
-
-
+#C1 {
+    font-size: 40pt
 }
 
-.header p {
-    margin-top: .5em;
-
+#C2 {
+    font-size: 40pt
 }
 
 #name {
-    display: block; width:100%;
+    display: block;
+    font-size: 40pt;
+    margin-bottom: 0px;
+    margin-top: 0px
+}
+
+#htmllist {
+    list-style: none;
+    padding-left: 0px;
+}
+
+#footerInfo {
+    text-align: center;
+}
+
+
+
+
+
+
+/*
+    PDF Cert Styling
+*/
+
+@media print {
+
+    @page {
+        size: landscape;
+    }
+
+/*    .no-print, .no-print * {
+        display: none !important;
+        vertical-align: top !important
+    }*/
+
+    #pdfHeader img {
+/*        display: block;
+        text-align: center;
+        margin: auto;*/
+        /*padding-right: 100px;*/
+    }
+    
+
+    #pdfHeader {
+        /*display: block;*/
+        text-align: center;
+        /*margin: auto;*/
+    }
+
+    /*#pdfHeader img {*/
+        /*margin: auto;*/
+        /*align-content: center;*/
+        /*padding-right: 90px;*/
+        /*display: block
+    }*/
+
+    #pdfHeader hr {
+        border-top: 4px solid black;
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+    }
+
+    #C1 {
+        font-size: 40pt
+    }
+
+    #C2 {
+        font-size: 40pt
+    }
+
+    #pdfName {
+        display: block;
+        font-size: 40pt;
+        margin-bottom: 0px;
+        margin-top: 0px
+    }
+
+    #pdfList {
+        list-style: none;
+        padding-left: 0px;
+        text-align: left;
+    }
+
+    #pdfFooterInfo {
+        text-align: center;
+    }
+
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
