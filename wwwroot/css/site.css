@@ -75,10 +75,31 @@
 
     @page {
         size: landscape;
+        margin: 25px;
     }
 
     #pdfHeader {
         text-align: center;
+    }
+
+    html{
+        height: 100%;
+    }
+
+    body {
+        width: 100%;
+        height: 100%;
+        border: gray solid 6px;
+        position: relative;
+    }
+
+    body:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        border: solid white 20px;
     }
 
     #thisIsTo {
@@ -93,6 +114,7 @@
     #pdfHeader img {
         width: 75%;
         height: 75%;
+        margin-top: 20px;
     }
 
     #pdfHeader hr {
@@ -102,11 +124,11 @@
     }
 
     #C1 {
-        font-size: 35pt;
+        font-size: 28pt;
     }
 
     #C2 {
-        font-size: 35pt;
+        font-size: 28pt;
     }
 
     #pdfName {
@@ -116,11 +138,16 @@
         margin-top: 0px;
     }
 
+    #pdfHeader h1,
+    #pdfHeader #pdfName {
+        font-size: 20pt;
+    }
+
     #pdfList {
         list-style: none;
         padding-left: 0px;
         text-align: left;
-        font-size: 10pt;
+        font-size: 9pt;
     }
 
     #pdfFooterInfo {
@@ -128,7 +155,13 @@
         font-size: 10pt;
     }
 
-
+    #pdfHeader div + div + div{
+        position: absolute;
+        bottom: 1em;
+        text-align: center;
+        margin: auto;
+        width: 100%;
+    }
 }
 
 

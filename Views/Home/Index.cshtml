@@ -32,6 +32,7 @@
         // Clear any session variables on page load
         //
         ClearSession();
+        $('#retry').html("").hide();
         $("#CredIn").focus();
     });
 
@@ -62,6 +63,7 @@
         }
         catch (e) {
             $('#ERRORLABEL').html("Unknown Error").hide();
+            $('#retry').html("").show();
         }
     });
 
