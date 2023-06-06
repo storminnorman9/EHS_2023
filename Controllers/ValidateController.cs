@@ -30,6 +30,7 @@ namespace EHS_2023.Controllers
         public string CertDataSQL()
         {
             return Configuration["DatabaseOptions:Query"] + " AND " + Configuration["DatabaseOptions:ValidationField"] + " = @Credentials ORDER BY StartTime";
+            //return Configuration["DatabaseOptions:Query"] + " AND " + Configuration["DatabaseOptions:ValidationField"] + " in (@Credentials, 'jerald.s.holtzclaw@exxonmobil.com') ORDER BY StartTime";
         }
 
         public object ValidateCredentials(string userCredentials)

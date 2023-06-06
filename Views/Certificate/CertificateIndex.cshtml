@@ -85,7 +85,7 @@
             '<div><img id="pdfImage" src="../images/logo.jpg" alt="Logo">' +
                 '<div>' +
                     '<h1><span id="C1">C</span>ERTIFICATE OF <span id="C2">C</span>OMPLETION</h1>' +
-                    '<span>THIS IS TO CERTIFY THAT</span><br /><span id="pdfName">@Model.FullName</span>' +
+                    '<span id="thisIsTo">THIS IS TO CERTIFY THAT</span><br /><span id="pdfName">@Model.FullName</span>' +
                     '<hr />' +
                     '<p><strong>ATTENDED THE FOLLOWING ONE-HOUR SEMINARS:</strong></p>' +
                 '</div>' +
@@ -127,7 +127,7 @@
             dummyListItem = document.createElement("li");
             dummyListItem.innerText = String(data[j]["SessionName"]);
             certificateList.appendChild(dummyListItem);
-            
+
             if (($(dummyListItem).outerHeight(true) + $(certificateList).outerHeight(true)) > availableHeight) {
                 //
                 // The height of the current item + the height of the dummylist is greater than available height,

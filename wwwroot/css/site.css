@@ -24,6 +24,10 @@
 
 }
 
+#certHeader p{
+    margin-bottom: 0rem;
+}
+
 #certHeader img {
     width: 100%;
 }
@@ -44,7 +48,7 @@
 
 #name {
     display: block;
-    font-size: 40pt;
+    font-size: 35pt;
     margin-bottom: 0px;
     margin-top: 0px
 }
@@ -73,35 +77,41 @@
         size: landscape;
     }
 
-   
-
     #pdfHeader {
-        /*display: block;*/
         text-align: center;
-        /*margin: auto;*/
+    }
+
+    #thisIsTo {
+    font-size: 14pt;
+    }
+
+
+    #pdfHeader p{
+        margin-bottom: 0rem;
     }
 
     #pdfHeader img {
-        width: 100%;
+        width: 75%;
+        height: 75%;
     }
 
     #pdfHeader hr {
-        border-top: 4px solid black;
+        border-top: 2px solid black;
         margin-top: 0rem;
         margin-bottom: 0rem;
     }
 
     #C1 {
-        font-size: 40pt;
+        font-size: 35pt;
     }
 
     #C2 {
-        font-size: 40pt;
+        font-size: 35pt;
     }
 
     #pdfName {
         display: block;
-        font-size: 40pt;
+        font-size: 30pt;
         margin-bottom: 0px;
         margin-top: 0px;
     }
@@ -110,10 +120,12 @@
         list-style: none;
         padding-left: 0px;
         text-align: left;
+        font-size: 10pt;
     }
 
     #pdfFooterInfo {
         text-align: center;
+        font-size: 10pt;
     }
 
 
